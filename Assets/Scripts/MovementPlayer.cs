@@ -7,6 +7,8 @@ public class MovementPlayer : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float speed = 5f;
     [SerializeField] float jump = 5f;
+    [SerializeField] Transform chaoCheck;
+    [SerializeField] LayerMask chao;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,16 @@ public class MovementPlayer : MonoBehaviour
 
         rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
-        if(Input.GetButtonDown("Jump")){
+        if(Input.GetButtonDown("Jump") && IsGround()){
             rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
         }
         
     }
+
+    
+    bool IsGround()
+    {
+        return Physics.CheckSphere(chaoCheck.position, 0.1f, chao);
+    }
+    
 }

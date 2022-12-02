@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2863550877706101642}
   - component: {fileID: 2863550877706101643}
   - component: {fileID: 2863550877706101636}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2863550877706101637}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6ce0814a2a2bc5d47b8ab8fc6c6df005, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
