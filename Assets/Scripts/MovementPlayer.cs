@@ -26,9 +26,20 @@ public class MovementPlayer : MonoBehaviour
         rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
         if(Input.GetButtonDown("Jump") && IsGround()){
-            rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
+            Pula();
         }
         
+    }
+
+    void Pula(){
+        rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
+    }
+
+    private void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.CompareTag("Inimigo Cabeca")){
+            Destroy(collision.transform.parent.gameObject);
+            Pula();
+        }
     }
 
     
