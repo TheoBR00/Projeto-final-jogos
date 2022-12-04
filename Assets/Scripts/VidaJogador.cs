@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class VidaJogador : MonoBehaviour
 {
 
+    bool morto = false;
+
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.CompareTag("Inimigo Body")){
+            GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<MovementPlayer>().enabled = false;
             Morre();
         }
     }
@@ -21,14 +26,15 @@ public class VidaJogador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y < -1f && !morto){
+            Morre();
+        }
         
     }
 
     void Morre(){
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<MovementPlayer>().enabled = false;
         Invoke(nameof(LevelReload), 1.3f);
+        morto = true;
     }
 
     void LevelReload(){
